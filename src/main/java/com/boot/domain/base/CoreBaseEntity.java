@@ -9,6 +9,9 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Parent entity that will have all entities common fields
+ */
 @MappedSuperclass
 @NoArgsConstructor @Setter @Getter
 public class CoreBaseEntity implements Serializable {
@@ -19,9 +22,9 @@ public class CoreBaseEntity implements Serializable {
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @NotBlank( message = "dateCaptured Required")
-    @Column( name = "DateCaptured")
-    protected Date dateCaptured;
+    @NotBlank( message = "Creation Date Required")
+    @Column( name = "CreateDate")
+    protected Date createDate;
 
     @Temporal(TemporalType.TIMESTAMP)
     @NotBlank( message = "Update Date Required")
