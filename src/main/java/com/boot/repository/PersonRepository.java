@@ -1,4 +1,4 @@
-package com.boot.resources;
+package com.boot.repository;
 
 import com.boot.domain.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
