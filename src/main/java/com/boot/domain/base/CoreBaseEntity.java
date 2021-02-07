@@ -22,12 +22,10 @@ public class CoreBaseEntity implements Serializable {
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @NotBlank( message = "Creation Date Required")
-    @Column( name = "CreateDate")
+    @Column( name = "CreateDate", nullable = false)
     protected Date createDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @NotBlank( message = "Update Date Required")
-    @Column( name = "UpdateDate")
+    @Column( name = "UpdateDate", nullable = false)
     protected Date updateDate;
 }
