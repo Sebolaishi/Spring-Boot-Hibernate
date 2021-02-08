@@ -16,6 +16,9 @@ import java.util.Date;
 @RunWith(SpringRunner.class)
 public class PersonTests {
 
+    @Autowired
+    private PersonService personService;
+
     Person person = new Person
             .PersonBuilder()
             .getFirstname("Mahlatse")
@@ -24,8 +27,6 @@ public class PersonTests {
             .getCreateDate(new Date())
             .getUpdateDate(new Date())
             .build();
-    @Autowired
-    private PersonService personService;
 
     @BeforeAll
     static void initializer(){
