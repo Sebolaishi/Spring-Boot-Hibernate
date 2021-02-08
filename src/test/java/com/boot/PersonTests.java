@@ -19,6 +19,9 @@ public class PersonTests {
     @Autowired
     private PersonService personService;
 
+    /**
+     * Prepare Object testing data
+     */
     Person person = new Person
             .PersonBuilder()
             .getFirstname("Mahlatse")
@@ -33,6 +36,9 @@ public class PersonTests {
 
     }
 
+    /**
+     * Testing Person object and properties nullity
+     */
     @Test
     public void testPerson(){
 
