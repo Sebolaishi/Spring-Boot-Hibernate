@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Person")
-@RequiredArgsConstructor @Setter
+@NoArgsConstructor @Setter @Getter
 public class Person extends CoreBaseEntity implements Serializable {
 
     @Column(name = "FirstName", length = 30)
@@ -21,14 +21,52 @@ public class Person extends CoreBaseEntity implements Serializable {
     @Column(name = "IdentityNumber", length = 13)
     private String identityNumber;
 
-    @Builder
+    /**
+     *
+     */
     public static class PersonBuilder{
-        private final String firstname;
-        private final String lastname;
-        private final String identityNumber;
-        protected Date createDate;
-        protected Date updateDate;
+        private String firstname;
+        private String lastname;
+        private String identityNumber;
+        private Date createDate;
+        private Date updateDate;
 
+        public PersonBuilder getFirstname(String firstname) {
+            this.firstname = firstname;
+            return this;
+        }
+
+        public PersonBuilder getLastname(String lastname) {
+            this.lastname = lastname;
+            return this;
+        }
+
+        public PersonBuilder getIdentityNumber(String identityNumber) {
+            this.identityNumber = identityNumber;
+            return this;
+        }
+
+        public PersonBuilder getCreateDate(Date createDate) {
+            this.createDate = createDate;
+            return this;
+        }
+
+        public PersonBuilder getUpdateDate(Date updateDate) {
+            this.updateDate = updateDate;
+            return this;
+        }
+
+        public Person build(){
+            Person person = new Person();
+
+            person.firstname = this.firstname;
+            person.lastname = this.lastname;
+            person.identityNumber = this.identityNumber;
+            person.createDate = this.createDate;
+            person.updateDate = this.updateDate;
+
+            return person;
+        }
     }
 
 

@@ -13,6 +13,10 @@ public class PersonService implements Serializable{
     @Autowired
     private PersonRepository personRepository;
 
+    /**
+     *
+     * @param person
+     */
     public void save(Person person){
         personRepository.save(person);
     }

@@ -2,6 +2,7 @@ package com.boot.domain.base;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class CoreBaseEntity implements Serializable {
     protected Date createDate;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @NonNull
     @Column( name = "UpdateDate", nullable = false)
     protected Date updateDate;
 }

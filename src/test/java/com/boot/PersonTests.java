@@ -4,6 +4,7 @@ import com.boot.domain.Person;
 import com.boot.services.PersonService;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,28 +16,30 @@ import java.util.Date;
 @RunWith(SpringRunner.class)
 public class PersonTests {
 
-    Person.PersonBuilder personBuilder = Person.PersonBuilder.builder()
-            .firstname("Mahlatse")
-            .lastname("Moloto")
-            .identityNumber("9303010000008")
+    Person person = new Person
+            .PersonBuilder()
+            .getFirstname("Mahlatse")
+            .getLastname("Moloto")
+            .getIdentityNumber("9303010000007")
+            .getCreateDate(new Date())
+            .getUpdateDate(new Date())
             .build();
-
-    Person person = new Person();
-
     @Autowired
     private PersonService personService;
+
+    @BeforeAll
+    static void initializer(){
+
+    }
 
     @Test
     public void testPerson(){
 
-        person.setFirstname("Mahlatse");
-        person.setLastname("Moloto");
-        person.setIdentityNumber("9303015785089");
-        person.setUpdateDate(new Date());
-        person.setCreateDate(new Date());
-
-        Assert.assertNotNull(person);
-
+        Assert.assertNotNull(person.getFirstname());
+        Assert.assertNotNull(person.getLastname());
+        Assert.assertNotNull(person.getIdentityNumber());
+        Assert.assertNotNull(person.getCreateDate());
+        Assert.assertNotNull(person.getUpdateDate());
         personService.save(person);
 
     }
