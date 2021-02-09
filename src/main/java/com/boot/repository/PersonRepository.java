@@ -7,12 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    /**
-     *
-     * @param s
-     * @param <S>
-     * @return
-     */
-    @Override
-    <S extends Person> S save(S s);
 }

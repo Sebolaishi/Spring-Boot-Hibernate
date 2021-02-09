@@ -4,7 +4,9 @@ import com.boot.domain.base.CoreBaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,6 +21,7 @@ public class Person extends CoreBaseEntity implements Serializable {
     private String lastname;
 
     @Column(name = "IdentityNumber", length = 13)
+    @NotBlank(message = "ID Number required")
     private String identityNumber;
 
     /**
@@ -28,8 +31,8 @@ public class Person extends CoreBaseEntity implements Serializable {
         private String firstname;
         private String lastname;
         private String identityNumber;
-        private Date createDate;
-        private Date updateDate;
+        private LocalDateTime createDate;
+        private LocalDateTime updateDate;
 
         public PersonBuilder getFirstname(String firstname) {
             this.firstname = firstname;
@@ -46,12 +49,12 @@ public class Person extends CoreBaseEntity implements Serializable {
             return this;
         }
 
-        public PersonBuilder getCreateDate(Date createDate) {
+        public PersonBuilder getCreateDate(LocalDateTime createDate) {
             this.createDate = createDate;
             return this;
         }
 
-        public PersonBuilder getUpdateDate(Date updateDate) {
+        public PersonBuilder getUpdateDate(LocalDateTime updateDate) {
             this.updateDate = updateDate;
             return this;
         }

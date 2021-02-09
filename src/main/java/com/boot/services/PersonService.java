@@ -16,8 +16,9 @@ public class PersonService implements Serializable{
     /**
      *
      * @param person
+     * @return
      */
-    public void save(Person person){
-        personRepository.save(person);
+    public Person save(Person person){
+        return personRepository.save(person);
     }
 }

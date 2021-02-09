@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -22,12 +23,12 @@ public class CoreBaseEntity implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column( name = "CreateDate", nullable = false)
-    protected Date createDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column( name = "CreateDate", nullable = false)
+    protected LocalDateTime createDate;
+
+
     @NonNull
     @Column( name = "UpdateDate", nullable = false)
-    protected Date updateDate;
+    protected LocalDateTime updateDate;
 }
