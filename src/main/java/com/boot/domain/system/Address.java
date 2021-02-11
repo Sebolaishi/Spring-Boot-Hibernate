@@ -32,6 +32,13 @@ public class Address implements Serializable {
     private Integer code;
 
     /**
+     * Entity relationships association
+     */
+    @Column(name = "Person")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Person person;
+
+    /**
      * Address object builder
      */
     public static class AddressBuilder{

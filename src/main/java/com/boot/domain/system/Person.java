@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Person")
@@ -27,6 +29,15 @@ public class Person extends CoreBaseEntity implements Serializable {
     @Column(name = "IdentityNumber", length = 13)
     @NotBlank(message = "ID Number is required")
     private String identityNumber;
+
+    /**
+     * Entity relationships association
+     */
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "address_Id")
+    private List<Address> addresses = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact_Id")
+    private List<Contact> contacts = new ArrayList<>();
 
     /**
      * Building Person object.
