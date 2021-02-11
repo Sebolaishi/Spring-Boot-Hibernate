@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Person extends CoreBaseEntity implements Serializable {
 
     /**
-     * Person object properties
+     * Person entity properties
      */
     @Column(name = "FirstName", length = 30)
     @NotBlank(message = "FirstName is required")
@@ -29,7 +29,7 @@ public class Person extends CoreBaseEntity implements Serializable {
     private String identityNumber;
 
     /**
-     * Builder Design Pattern Implementation
+     * Building Person object.
      */
     public static class PersonBuilder{
         private String firstname;

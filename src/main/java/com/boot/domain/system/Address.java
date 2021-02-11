@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Address implements Serializable {
 
     /**
-     * Properties
+     * Address entity properties
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
