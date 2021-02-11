@@ -30,14 +30,14 @@ public class PersonResource {
     }
 
     /**
-     * Endpoint for fetching Person data by name
-     * @param name
+     * Endpoint for fetching Person data by firstname
+     * @param firstname
      * @return
      */
     @GetMapping("/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Person> findPersonByName(@RequestParam String name){
-        return personService.findByName(name);
+    public List<Person> findPersonByName(@RequestParam String firstname){
+        return personService.findPersonByFirstname(firstname);
     }
 
 }

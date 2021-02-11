@@ -24,11 +24,11 @@ public class PersonService implements Serializable{
     }
 
     /**
-     * Fetch person data by person name
-     * @param name
+     * Fetch person data by person firstname
+     * @param firstname
      * @return
      */
-    public List<Person> findByName(String name){
-        return personRepository.findPersonByName(name);
+    public List<Person> findPersonByFirstname(String firstname){
+        return personRepository.findPersonByFirstname(firstname);
     }
 }

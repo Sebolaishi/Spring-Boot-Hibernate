@@ -33,8 +33,6 @@ public class PersonTests {
             .getCreateDate(LocalDateTime.now())
             .getUpdateDate(LocalDateTime.now())
             .build();
-    @Autowired
-    private MockMvc mockMvc;
 
     @BeforeAll
     static void initializer(){

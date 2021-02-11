@@ -28,7 +28,7 @@ public class Contact implements Serializable {
     @Column(name = "Email_Address", length = 100)
     private String email;
 
-    @JoinColumn(name = "Person_Id")
+    @JoinColumn(name = "id")
     @ManyToOne(cascade = CascadeType.ALL)
     private Person person;
 }
