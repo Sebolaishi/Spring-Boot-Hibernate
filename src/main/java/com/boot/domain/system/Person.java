@@ -1,4 +1,4 @@
-package com.boot.domain;
+package com.boot.domain.system;
 
 import com.boot.domain.base.CoreBaseEntity;
 import lombok.*;
@@ -7,25 +7,29 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "Person")
 @NoArgsConstructor @Setter @Getter
 public class Person extends CoreBaseEntity implements Serializable {
 
+    /**
+     * Person object properties
+     */
     @Column(name = "FirstName", length = 30)
+    @NotBlank(message = "FirstName is required")
     private String firstname;
 
     @Column(name = "LastName", length = 30)
+    @NotBlank(message = "Lastname is required")
     private String lastname;
 
     @Column(name = "IdentityNumber", length = 13)
-    @NotBlank(message = "ID Number required")
+    @NotBlank(message = "ID Number is required")
     private String identityNumber;
 
     /**
-     *
+     * Builder Design Pattern Implementation
      */
     public static class PersonBuilder{
         private String firstname;

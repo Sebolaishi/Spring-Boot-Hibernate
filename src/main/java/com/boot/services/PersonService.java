@@ -1,6 +1,6 @@
 package com.boot.services;
 
-import com.boot.domain.Person;
+import com.boot.domain.system.Person;
 import com.boot.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

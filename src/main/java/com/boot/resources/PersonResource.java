@@ -1,6 +1,6 @@
 package com.boot.resources;
 
-import com.boot.domain.Person;
+import com.boot.domain.system.Person;
 import com.boot.services.PersonService;
 import org.assertj.core.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,5 @@ public class PersonResource {
         return personService.save(resource);
     }
 
-    @GetMapping("/{id}")
-    public void fetch(){}
 
 }

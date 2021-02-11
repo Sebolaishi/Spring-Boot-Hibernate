@@ -1,6 +1,6 @@
 package com.boot;
 
-import com.boot.domain.Person;
+import com.boot.domain.system.Person;
 import com.boot.services.PersonService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,9 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
