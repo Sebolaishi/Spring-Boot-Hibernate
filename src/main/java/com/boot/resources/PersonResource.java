@@ -34,9 +34,9 @@ public class PersonResource {
      * @param firstname
      * @return
      */
-    @GetMapping("/{name}")
+    @GetMapping(value = "/{firstname}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Person> findPersonByName(@RequestParam String firstname){
+    public List<Person> findPersonByName(@PathVariable String firstname){
         return personService.findPersonByFirstname(firstname);
     }
 
