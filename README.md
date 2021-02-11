@@ -4,3 +4,4 @@
  - Spring Boot
  - Spring Hibernate JPA
  - Lombok
+ - Adoptopenjdk-11.jdk
