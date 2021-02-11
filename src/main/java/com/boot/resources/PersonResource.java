@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/person")
 public class PersonResource {
@@ -15,12 +17,27 @@ public class PersonResource {
     @Autowired
     private PersonService personService;
 
+    /**
+     * Endpoint for creating new person record or object
+     * @param resource
+     * @return
+     */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public Person savePerson(@RequestBody Person resource){
+    public String savePerson(@RequestBody Person resource){
         Preconditions.checkNotNull(resource);
-        return personService.save(resource);
+        return HttpStatus.CREATED.name();
     }
 
+    /**
+     * Endpoint for fetching Person data by name
+     * @param name
+     * @return
+     */
+    @GetMapping("/{name}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> findPersonByName(@RequestParam String name){
+        return personService.findByName(name);
+    }
 
 }

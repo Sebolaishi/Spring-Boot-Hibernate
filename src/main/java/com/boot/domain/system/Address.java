@@ -34,7 +34,7 @@ public class Address implements Serializable {
     /**
      * Entity relationships association
      */
-    @Column(name = "Person")
+    @JoinColumn(name = "Person_Id")
     @ManyToOne(cascade = CascadeType.ALL)
     private Person person;
 
