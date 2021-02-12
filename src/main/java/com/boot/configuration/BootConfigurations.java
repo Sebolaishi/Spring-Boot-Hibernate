@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class BootConfigurations {
 
     /**
-     *
+     * Model Mapper configuration bean.
      * @return
      */
     @Bean

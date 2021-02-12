@@ -19,15 +19,12 @@ public class Person extends CoreBaseEntity implements Serializable {
      * Person entity properties
      */
     @Column(name = "FirstName", length = 30)
-    @NotBlank(message = "FirstName is required")
     private String firstname;
 
     @Column(name = "LastName", length = 30)
-    @NotBlank(message = "Lastname is required")
     private String lastname;
 
     @Column(name = "IdentityNumber", length = 13)
-    @NotBlank(message = "ID Number is required")
     private String identityNumber;
 
     /**

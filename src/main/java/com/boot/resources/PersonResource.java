@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -38,12 +39,18 @@ public class PersonResource {
     /**
      * Endpoint for fetching Person data by firstname
      * @param firstname
-     * @return
+     * @return personProfiles
      */
     @GetMapping(value = "/{firstname}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Person> findPersonByName(@PathVariable String firstname){
-        return personService.findPersonByFirstname(firstname);
+    public List<PersonDto> findPersonByName(@PathVariable String firstname){
+        List<PersonDto> personProfiles = new ArrayList<>();
+        personService.findPersonByFirstname(firstname).forEach(person -> {
+            PersonDto personDto = modelMapper.map(person,PersonDto.class);
+            personProfiles.add(personDto);
+        });
+
+        return personProfiles;
     }
 
 }

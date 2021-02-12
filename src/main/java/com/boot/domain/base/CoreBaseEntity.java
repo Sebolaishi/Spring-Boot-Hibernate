@@ -15,13 +15,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor @Setter @Getter
 public class CoreBaseEntity implements Serializable {
 
+    @Column( name = "CreateDate", updatable = false, nullable = false)
+    protected LocalDateTime createDate;
+    /**
+     * Entities common properties
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
-
-    @Column( name = "CreateDate", nullable = false)
-    protected LocalDateTime createDate;
 
     @Column( name = "UpdateDate", nullable = false)
     protected LocalDateTime updateDate;
