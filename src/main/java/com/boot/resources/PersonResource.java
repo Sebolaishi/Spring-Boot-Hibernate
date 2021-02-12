@@ -1,8 +1,10 @@
 package com.boot.resources;
 
 import com.boot.domain.system.Person;
+import com.boot.dto.PersonDto;
 import com.boot.services.PersonService;
 import org.assertj.core.util.Preconditions;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +18,8 @@ public class PersonResource {
 
     @Autowired
     private PersonService personService;
+    @Autowired
+    private ModelMapper modelMapper;
 
     /**
      * Endpoint for creating new person record or object
@@ -24,8 +28,10 @@ public class PersonResource {
      */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String savePerson(@RequestBody Person resource){
+    public String savePerson(@RequestBody PersonDto resource){
         Preconditions.checkNotNull(resource);
+        Person person = modelMapper.map(resource, Person.class);
+        personService.save(person);
         return HttpStatus.CREATED.name();
     }
 
