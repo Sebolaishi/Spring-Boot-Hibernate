@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Address")
-@NoArgsConstructor @Setter @Getter @ToString
+@NoArgsConstructor @Setter @Getter
 public class Address implements Serializable {
 
     /**
@@ -34,8 +34,8 @@ public class Address implements Serializable {
     /**
      * Entity relationships association
      */
-    @JoinColumn(name = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "id", nullable = false)
     private Person person;
 
     /**

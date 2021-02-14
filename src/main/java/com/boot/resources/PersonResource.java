@@ -2,20 +2,22 @@ package com.boot.resources;
 
 import com.boot.domain.system.Person;
 import com.boot.dto.PersonDto;
+import com.boot.services.modelMapper.ConversionToDto;
+import com.boot.services.modelMapper.ConversionToEntity;
 import com.boot.services.PersonService;
-import org.assertj.core.util.Preconditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/person")
-public class PersonResource {
+public class PersonResource implements ConversionToEntity<Person, PersonDto>, ConversionToDto<PersonDto,Person> {
 
     @Autowired
     private PersonService personService;
@@ -29,28 +31,39 @@ public class PersonResource {
      */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String savePerson(@RequestBody PersonDto resource){
-        Preconditions.checkNotNull(resource);
+    @ResponseBody
+    public String savePerson(@Valid @RequestBody PersonDto resource){
         Person person = modelMapper.map(resource, Person.class);
         personService.save(person);
         return HttpStatus.CREATED.name();
     }
 
     /**
-     * Endpoint for fetching Person data by firstname
-     * @param firstname
-     * @return personProfiles
+     *
+     * @param firstname person firstname
+     * @return profiles associated to firstname
      */
     @GetMapping(value = "/{firstname}")
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     public List<PersonDto> findPersonByName(@PathVariable String firstname){
         List<PersonDto> personProfiles = new ArrayList<>();
         personService.findPersonByFirstname(firstname).forEach(person -> {
-            PersonDto personDto = modelMapper.map(person,PersonDto.class);
+            PersonDto personDto = convertToDto(person);
             personProfiles.add(personDto);
         });
 
         return personProfiles;
+    }
+
+    @Override
+    public Person convertToEntity(PersonDto objectDto) {
+        return modelMapper.map(objectDto, Person.class);
+    }
+
+    @Override
+    public PersonDto convertToDto(Person object) {
+        return modelMapper.map(object,PersonDto.class);
     }
 
 }

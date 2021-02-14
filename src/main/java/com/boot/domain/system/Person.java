@@ -4,7 +4,6 @@ import com.boot.domain.base.CoreBaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,10 +29,10 @@ public class Person extends CoreBaseEntity implements Serializable {
     /**
      * Entity relationships association
      */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "address_Id")
+    @OneToMany(mappedBy = "address_Id", cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REMOVE})
     private List<Address> addresses = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact_Id")
+    @OneToMany( mappedBy = "contact_Id", cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REMOVE})
     private List<Contact> contacts = new ArrayList<>();
 
     /**

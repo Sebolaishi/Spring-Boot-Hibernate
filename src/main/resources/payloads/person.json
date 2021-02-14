@@ -1,5 +1,18 @@
 {
-  "firstname":"Mahlatse",
-  "lastname":"Moloto",
-  "identityNumber":"90222222323"
+  "firstname":  "Mahlatse",
+  "lastname": "Moloto",
+  "identityNumber": "90222222323",
+  "Address": [
+    {
+      "address_Type": "PHYSICAL",
+      "country": "South Africa",
+      "code": "0786"
+    }
+  ],
+  "Contact": [
+    {
+      "cellNumber": "0790000009",
+      "email": "molotolodwin@gmail.com"
+    }
+  ]
 }

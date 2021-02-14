@@ -1,15 +1,21 @@
 package com.boot.dto;
 
+import com.boot.domain.system.Address;
+import com.boot.domain.system.AddressType;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Setter @Getter
 public class PersonDto {
+
     @NotBlank(message = "FirstName is required")
     private String firstname;
     @NotBlank(message = "Lastname is required")
@@ -18,4 +24,7 @@ public class PersonDto {
     private String identityNumber;
     private LocalDateTime createDate = LocalDateTime.now();
     private LocalDateTime updateDate = LocalDateTime.now();
+    private List<ContactDto> contacts;
+    private List<AddressDto> addresses;
+
 }
