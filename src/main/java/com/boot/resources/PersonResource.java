@@ -39,8 +39,8 @@ public class PersonResource implements ConversionToEntity<Person, PersonDto>, Co
     }
 
     /**
-     *
-     * @param firstname person firstname
+     *  Fetch all profiles associated to firstname
+     * @param firstname for person
      * @return profiles associated to firstname
      */
     @GetMapping(value = "/{firstname}")
@@ -56,14 +56,24 @@ public class PersonResource implements ConversionToEntity<Person, PersonDto>, Co
         return personProfiles;
     }
 
+    /**
+     * Converts Dto to Entity
+     * @param personDto for person object
+     * @return person Object
+     */
     @Override
-    public Person convertToEntity(PersonDto objectDto) {
-        return modelMapper.map(objectDto, Person.class);
+    public Person convertToEntity(PersonDto personDto) {
+        return modelMapper.map(personDto, Person.class);
     }
 
+    /**
+     * Converts entity to dto
+     * @param person object
+     * @return person dto
+     */
     @Override
-    public PersonDto convertToDto(Person object) {
-        return modelMapper.map(object,PersonDto.class);
+    public PersonDto convertToDto(Person person) {
+        return modelMapper.map(person,PersonDto.class);
     }
 
 }
