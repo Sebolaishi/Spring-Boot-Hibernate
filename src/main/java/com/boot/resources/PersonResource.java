@@ -26,14 +26,14 @@ public class PersonResource implements ConversionToEntity<Person, PersonDto>, Co
 
     /**
      * Endpoint for creating new person record or object
-     * @param resource
+     * @param personDto
      * @return
      */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public String savePerson(@Valid @RequestBody PersonDto resource){
-        Person person = modelMapper.map(resource, Person.class);
+    public String savePerson(@Valid @RequestBody PersonDto personDto){
+        Person person = convertToEntity(personDto);
         personService.save(person);
         return HttpStatus.CREATED.name();
     }
