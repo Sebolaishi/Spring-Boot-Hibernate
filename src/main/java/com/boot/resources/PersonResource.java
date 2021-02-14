@@ -48,10 +48,11 @@ public class PersonResource implements ConversionToEntity<Person, PersonDto>, Co
     @ResponseBody
     public List<PersonDto> findPersonByName(@PathVariable String firstname){
         List<PersonDto> personProfiles = new ArrayList<>();
-        personService.findPersonByFirstname(firstname).forEach(person -> {
-            PersonDto personDto = convertToDto(person);
-            personProfiles.add(personDto);
-        });
+        personService.findPersonByFirstname(firstname)
+                .forEach(person -> {
+                    PersonDto personDto = convertToDto(person);
+                    personProfiles.add(personDto);
+                });
 
         return personProfiles;
     }
