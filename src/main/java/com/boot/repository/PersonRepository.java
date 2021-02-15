@@ -11,7 +11,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     /**
      *
-     * @param firstname
+     * @param firstname for person
      * @return
      */
     List<Person> findPersonByFirstname(String firstname);
