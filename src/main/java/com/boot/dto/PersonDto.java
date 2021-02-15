@@ -1,13 +1,9 @@
 package com.boot.dto;
 
-import com.boot.domain.system.Address;
-import com.boot.domain.system.AddressType;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,6 +12,9 @@ import java.util.List;
 @Setter @Getter
 public class PersonDto {
 
+    /**
+     * properties for Person Dto
+     */
     @NotBlank(message = "FirstName is required")
     private String firstname;
     @NotBlank(message = "Lastname is required")
