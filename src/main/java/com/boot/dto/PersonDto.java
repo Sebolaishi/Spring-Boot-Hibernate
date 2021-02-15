@@ -23,6 +23,7 @@ public class PersonDto {
     private String identityNumber;
     private LocalDateTime createDate = LocalDateTime.now();
     private LocalDateTime updateDate = LocalDateTime.now();
+
     private List<ContactDto> contacts;
     private List<AddressDto> addresses;
 

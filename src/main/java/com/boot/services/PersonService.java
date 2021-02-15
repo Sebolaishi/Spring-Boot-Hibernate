@@ -20,6 +20,8 @@ public class PersonService implements Serializable{
      * @return
      */
     public void save(Person person){
+        person.getAddresses().forEach(address -> address.setPerson(person));
+        person.getContacts().forEach(contact -> contact.setPerson(person));
         personRepository.save(person);
     }
 
