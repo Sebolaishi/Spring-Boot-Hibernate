@@ -15,4 +15,5 @@ public class BootConfigurations {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 }
