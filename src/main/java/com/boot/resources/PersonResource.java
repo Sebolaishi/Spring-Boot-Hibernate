@@ -17,12 +17,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/person")
-public class PersonResource implements ConversionToEntity<Person, PersonDto>, ConversionToDto<PersonDto,Person> {
+public class PersonResource{
 
     @Autowired
     private PersonService personService;
-    @Autowired
-    private ModelMapper modelMapper;
 
     /**
      * Endpoint for creating new person record or object
@@ -33,7 +31,7 @@ public class PersonResource implements ConversionToEntity<Person, PersonDto>, Co
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String savePerson(@Valid @RequestBody PersonDto personDto){
-        Person person = convertToEntity(personDto);
+        Person person = personService.convertToEntity(personDto);
         personService.save(person);
         return HttpStatus.CREATED.name();
     }
@@ -50,31 +48,11 @@ public class PersonResource implements ConversionToEntity<Person, PersonDto>, Co
         List<PersonDto> personProfiles = new ArrayList<>();
         personService.findPersonByFirstname(firstname)
                 .forEach(person -> {
-                    PersonDto personDto = convertToDto(person);
+                    PersonDto personDto = personService.convertToDto(person);
                     personProfiles.add(personDto);
                 });
 
         return personProfiles;
-    }
-
-    /**
-     * Converts Dto to Entity
-     * @param personDto for person object
-     * @return person Object
-     */
-    @Override
-    public Person convertToEntity(PersonDto personDto) {
-        return modelMapper.map(personDto, Person.class);
-    }
-
-    /**
-     * Converts entity to dto
-     * @param person object
-     * @return person dto
-     */
-    @Override
-    public PersonDto convertToDto(Person person) {
-        return modelMapper.map(person,PersonDto.class);
     }
 
 }
