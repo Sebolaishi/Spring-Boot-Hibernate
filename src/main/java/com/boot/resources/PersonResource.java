@@ -2,10 +2,7 @@ package com.boot.resources;
 
 import com.boot.domain.system.Person;
 import com.boot.dto.PersonDto;
-import com.boot.services.modelMapper.ConversionToDto;
-import com.boot.services.modelMapper.ConversionToEntity;
 import com.boot.services.PersonService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
