@@ -9,8 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "Person")
+@MappedSuperclass
 @NoArgsConstructor @Setter @Getter
 public class Person extends CoreBaseEntity implements Serializable {
 
